@@ -3,15 +3,19 @@ package com.hack.hackathon.service;
 import com.theokanning.openai.completion.CompletionChoice;
 import com.theokanning.openai.completion.CompletionRequest;
 import com.theokanning.openai.service.OpenAiService;
-import jakarta.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
+@Service
 public class AiService {
-//    @Value("spring.data.openaiapikey")
-    private final String openaiApiKey = "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";
+    @Value("spring.data.openaiapikey")
+    private static String openaiApiKey;
     private final OpenAiService service;
 
     public AiService() {

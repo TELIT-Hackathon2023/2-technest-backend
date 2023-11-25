@@ -2,6 +2,7 @@ package com.hack.hackathon.controller;
 
 import com.hack.hackathon.payload.TestPayload;
 import com.hack.hackathon.service.AiService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/test/openai")
 public class TestOpenAI {
-    private AiService aiService = new AiService();
+    @Autowired
+    private final AiService aiService;
 
     @GetMapping
     public ResponseEntity<List<String>> getAllTests() {
