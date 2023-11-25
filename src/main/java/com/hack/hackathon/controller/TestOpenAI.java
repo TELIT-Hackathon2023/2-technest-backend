@@ -15,8 +15,9 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/test/openai")
 public class TestOpenAI {
+
     @Autowired
-    private final AiService aiService;
+    private AiService aiService;
 
     @GetMapping
     public ResponseEntity<List<String>> getAllTests() {

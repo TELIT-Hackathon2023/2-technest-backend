@@ -12,23 +12,30 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class AiService {
-    @Value("spring.data.openaiapikey")
-    private static String openaiApiKey;
-    private final OpenAiService service;
 
-    public AiService() {
-        service = new OpenAiService(openaiApiKey);
+    private final OpenAiService service;
+    private final String openaiApiKey;
+
+    public AiService(@Value("spring.data.openaiapikey") String openaiApiKey) {
+        this.openaiApiKey = openaiApiKey;
+        service = new OpenAiService(this.openaiApiKey);
     }
 
     public List<String> getSuggestions(List<String> prompts) {
-        if(prompts == null || prompts.size() == 0) return null;
+        if (prompts == null || prompts.isEmpty()) return null;
+
         var completionRequest = CompletionRequest.builder()
                 .model("ada")
                 .echo(true);
+
         prompts.forEach(completionRequest::prompt);
+
         var buildRequest = completionRequest.build();
-        return service.createCompletion(buildRequest).getChoices().stream().map(CompletionChoice::getText).toList();
+        return service.createCompletion(buildRequest).getChoices().stream()
+                .map(CompletionChoice::getText)
+                .toList();
     }
 }
