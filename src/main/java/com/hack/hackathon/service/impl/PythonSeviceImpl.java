@@ -81,7 +81,7 @@ public class PythonSeviceImpl implements PythonService {
         // Set up headers
         // You can use different models from dto or response classes
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.TEXT_PLAIN);
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
         System.out.println("SendingData --> "+ message.getSendData() );
 
@@ -90,13 +90,13 @@ public class PythonSeviceImpl implements PythonService {
 
         // Make the POST request and receive Python response
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> responseEntity = restTemplate.postForEntity(pythonServerAddress+"/api/receiveData", requestEntity.getBody().toString() ,String.class);
+        ResponseEntity<SendingDataDTO> responseEntity = restTemplate.postForEntity(pythonServerAddress+"/api/receiveData", requestEntity ,SendingDataDTO.class);
 
         // Extract and print the response from Python
 //        SendingDataDTO pythonResponse = responseEntity.getBody();
         // System.out.println("Response from Python: " + pythonResponse);
 
-        return responseEntity.getBody();
+        return responseEntity.getBody().getSendData().toString();
 //        return pythonResponse.getSendData();
     }
 
