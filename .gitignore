@@ -4,5 +4,7 @@ tardis-ai-bot-env
 tardis-ai-bot/__pycache__
 .DS_Store
 .vscode
+venv
+.idea
 .gitignore
 tardis-ai-bot/.deta
