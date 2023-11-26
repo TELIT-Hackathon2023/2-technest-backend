@@ -20,23 +20,34 @@ export const ConversationsContext = createContext({
 export function ConversationsProvider({ children }) {
     const [conversation, setConversation] = useState({
         id: crypto.randomUUID(),
-        messages: []
+        messages: [
+            { role: "AI", text: 'Hi, how can I help you?' }
+        ]
     });
     const [history, setHistory] = useLocalHistory();
 
     async function sendMessage(message) {
-        setConversation(prev => [...prev, {
-            role: "USER",
-            text: message
-        }])
+        setConversation(prev => ({
+            ...prev, messages: [...prev.messages, {
+                role: "USER",
+                text: message
+            }]
+        }))
 
-        const response = await fetch(`${BASE_URL}/prompt?data=${message}`);
+        const response = await fetch(`${BASE_URL}/prompt?data=${message}`, {
+            headers: {
+                "ngrok-skip-browser-warning": "69420",
+            }
+        });
         const { answer } = await response.json();
 
-        setConversation(prev => [...prev, {
-            role: "AI",
-            text: answer
-        }])
+        setConversation(prev => ({
+            ...prev,
+            messages: [...prev.messages, {
+                role: "AI",
+                text: answer
+            }]
+        }))
     }
 
     async function newConversation() {
@@ -47,7 +58,21 @@ export function ConversationsProvider({ children }) {
         })
     }
 
-    return <ConversationsContext.Provider value={{ conversation, history, sendMessage, newConversation }}>
+    async function loadHistoryEntry(id) {
+        const target = history.find(h => h.id === id);
+        if (!target) return
+        setConversation(target);
+        await fetch(`${BASE_URL}/set-history`, {
+            method: "POST",
+            headers: {
+                "ngrok-skip-browser-warning": "69420",
+                "content-type": "application/json"
+            },
+            body: JSON.parse(target)
+        });
+    }
+
+    return <ConversationsContext.Provider value={{ conversation, history, sendMessage, newConversation, loadHistoryEntry }}>
         {children}
     </ConversationsContext.Provider>
 }

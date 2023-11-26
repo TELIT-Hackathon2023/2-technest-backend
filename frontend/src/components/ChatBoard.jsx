@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ChatBotAnswer from "./ChatBotAnswer";
 import style from "./ChatBoard.module.css"
 import ChatInput from "./UI/ChatInput";
+import { ConversationsContext } from '../ConversationsContext';
 
 
 function ChatBoard() {
-  const [participants, setParticipants] = useState([
-    { role: "AI", text: 'Hi, how can I help you' }
-  ])
-
-    const addNewMessage = (message) => {
-      console.log(message)
-        setParticipants(prevParticipants => [...prevParticipants, message]);
-    };
-
-
+  const { conversation } = useContext(ConversationsContext)
 
   return (
     <div className={style.chatboard}>
       <div>
-        {participants.map(p => (
-          <ChatBotAnswer key={p.role + p.text} role={p.role} text={p.text} onFinish={() => console.log("Animation finished")} />
+        {conversation.messages.map(p => (
+          <ChatBotAnswer key={p.role + p.text} role={p.role} text={p.text} />
         ))}
       </div>
 
-        <ChatInput onNewMessage={addNewMessage} />
+      <ChatInput />
 
     </div>
   )

@@ -10,7 +10,6 @@ function UpperButtons() {
   return (
     <div className={style.wraper} >
         <HUI/>
-        <ButtonMenu btnType={<FontAwesomeIcon icon={faHouse} />}/>
         <ButtonMenu btnType={<FontAwesomeIcon icon={faPlus} />}/>
     </div>
   )
