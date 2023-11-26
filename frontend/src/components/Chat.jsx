@@ -9,7 +9,7 @@ function Chat() {
     <div className={style.chat}>
       
       <LeftbarMenu/>
-        <HistoryBar/>
+      <HistoryBar/>
       <ChatBoard/>
 
     </div>

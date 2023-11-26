@@ -1,33 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import style from './ChatBotAnswer.module.css';
 
-function ChatBotAnswer(props) {
-    const [typedText, setTypedText] = useState('');
-    const typingSpeed = 30; // speed in milliseconds
+const typingSpeed = 100; // speed in milliseconds
+let typingIndex = 0;
+function ChatBotAnswer({ role, text, onFinish }) {
+    const ref = useRef(null)
 
     useEffect(() => {
-        if (props.participant === "AI") {
-            const textToType = props.text;
-            let typingIndex = 0;
-
+        if (role === "AI") {
+            let interval
             const typeText = () => {
-                if (typingIndex < textToType.length) {
-                    setTypedText(prev => prev + textToType.charAt(typingIndex));
+                if (typingIndex >= text.length) {
+                    clearInterval(interval)
+                    onFinish?.()
+                }
+                if (typingIndex < text.length) {
+                    ref.current.innerHTML += text.charAt(typingIndex);
                     typingIndex++;
-                    setTimeout(typeText, typingSpeed);
                 }
             };
 
-            typeText();
-        }
-    }, [props.participant]); // Effect depends on the participant prop
+            interval = setInterval(typeText, typingSpeed);
 
-    console.log(props);
+            return () => clearInterval(interval);
+        } else {
+            ref.current.innerHTML = text;
+        }
+    }, [text]); // Effect depends on the participant prop
 
     return (
         <div className={style.answer}>
             <div className={style.answer_header}>
-                {props.participant === "AI" ? (
+                {role === "AI" ? (
                     <>
                         <div className={style.answer_header_icon}>AI</div>
                         <div className={style.answer_header_name}>Tardis</div>
@@ -40,9 +44,7 @@ function ChatBotAnswer(props) {
                 )}
             </div>
 
-            <div className={style.answer_context}>
-                {props.participant === "AI" ? typedText : props.text}
-            </div>
+            <div ref={ref} className={style.answer_context} />
         </div>
     );
 }
