@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { useLocalHistory } from "./hooks/useLocalHistory";
+import { serverUrlConnection } from "./settings/ConnectionSettings";
 
 /*
 
@@ -10,7 +11,7 @@ type HistoryEntry =
 
 */
 
-const BASE_URL = "https://a94f-147-232-36-11.ngrok-free.app"
+const BASE_URL = serverUrlConnection
 
 export const ConversationsContext = createContext({
     conversation: [],

@@ -29,3 +29,5 @@ function ChatInput() {
 }
 
 export default ChatInput
+
+// [[question, answer ]] -> [(question, answer)] -> service.set_history([(question, answer)])
