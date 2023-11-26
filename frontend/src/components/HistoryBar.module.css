@@ -7,7 +7,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     overflow: auto;
-    border-right: solid 1px #D0D0D0FF;
+    border-right: solid 1px #DFDFDF;
 
 }
 .history_section_container::-webkit-scrollbar {
@@ -19,7 +19,8 @@
 .history_date_container{
 
     color: grey;
-    display: flex; 
+    display: flex;
+    margin-bottom: 3px;
 }
 .history_btns_list{
     display: flex;
