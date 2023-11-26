@@ -6,22 +6,20 @@ function ChatBotAnswer(props) {
     const typingSpeed = 30; // speed in milliseconds
 
     useEffect(() => {
-        // Determine the text to type based on the participant
-        const textToType = props.participant === "AI" ?
-            "Hi! How can I help you with?" :
-            "Ultimately, the most important thing is to feel confident and comfortable in your chosen outfit. When you feel good, it will come through in your photos. Don't forget to also pay attention to hair, makeup, and accessories to complete your look. Good luck with your photoshoot!";
+        if (props.participant === "AI") {
+            const textToType = props.text;
+            let typingIndex = 0;
 
-        let typingIndex = 0;
+            const typeText = () => {
+                if (typingIndex < textToType.length) {
+                    setTypedText(prev => prev + textToType.charAt(typingIndex));
+                    typingIndex++;
+                    setTimeout(typeText, typingSpeed);
+                }
+            };
 
-        const typeText = () => {
-            if (typingIndex < textToType.length) {
-                setTypedText(prev => prev + textToType.charAt(typingIndex));
-                typingIndex++;
-                setTimeout(typeText, typingSpeed);
-            }
-        };
-
-        typeText();
+            typeText();
+        }
     }, [props.participant]); // Effect depends on the participant prop
 
     console.log(props);
@@ -43,7 +41,7 @@ function ChatBotAnswer(props) {
             </div>
 
             <div className={style.answer_context}>
-                {typedText}
+                {props.participant === "AI" ? typedText : props.text}
             </div>
         </div>
     );
