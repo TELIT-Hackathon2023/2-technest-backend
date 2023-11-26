@@ -25,3 +25,9 @@ async def receive_data(data: SendDataDto):
 
     except Exception as e:
         return {"error": str(e)}
+
+
+@app.get("/refresh-model")
+async def refresh_model():
+    chatbot_service.refresh_model()
+    return {"message": "Chat bot was trained on a new documentation!"}
