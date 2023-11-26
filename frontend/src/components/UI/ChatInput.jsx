@@ -9,7 +9,12 @@ function ChatInput() {
 
     async function sendData(){
 
-        const response = await fetch(`${serverUrlConnection}/prompt?data=${userMsg}`);
+        const response = await fetch(`${serverUrlConnection}/prompt?data=${userMsg}`,
+            {
+                headers: new Headers({
+                    "ngrok-skip-browser-warning": "69420",
+                }),
+            });
         const jsonResponse = await response.json();
         console.log(jsonResponse.answer);
     }

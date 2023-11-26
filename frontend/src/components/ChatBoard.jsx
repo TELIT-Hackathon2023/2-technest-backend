@@ -10,16 +10,6 @@ function ChatBoard() {
     { role: "AI", text: 'Hi, how are you' }
   ])
 
-  useEffect(() => {
-    setTimeout(() => {
-      setParticipants([
-        // { role: "USER", text: "Hello" },
-        // { role: "AI", text: 'Hi, how are you' },
-        // { role: "USER", text: "How's the weather" }
-      ])
-    }, 1000);
-  }, [])
-
   return (
     <div className={style.chatboard}>
       <div>
