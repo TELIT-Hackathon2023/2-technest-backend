@@ -1,50 +1,39 @@
-import React from 'react'
-import style from './ChatBotAnswer.module.css'
+import React from 'react';
+import Typewriter from "typewriter-effect";
+import style from './ChatBotAnswer.module.css';
 
-function ChatBotAnswer(props) {
+function ChatBotAnswer({ role, text }) {
+    return (
+        <div className={style.answer}>
+            <div className={style.answer_header}>
+                {role === "AI" ? (
+                    <>
+                        <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}><div className={style.answer_header_icon}>AI</div>
+                            <div className={style.answer_header_name}>Tardis</div></div>
+                        <span style={{ marginTop: "0.25rem" }}>
+                            <Typewriter
+                                options={{
+                                    delay: 10
+                                }}
+                                onInit={(typewriter) => {
+                                    typewriter
+                                        .typeString(text)
+                                        .start();
+                                }}
 
-    console.log(props)
-
-
-        return (
-            <div className={style.answer}>
-
-                <div className={style.answer_header}>
-                    {props.participant==="AI" ?(
-                        <>
-                            <div className={style.answer_header_icon}>AI</div>
-                            <div className={style.answer_header_name}>Tardis</div>
-
-                        </>
-                        )
-
-                        :
-                        (
-                        <>
-                            <div className={style.answer_header_icon_user}>U</div>
-                            <div className={style.answer_header_name}>User</div>
-
-                        </>
-                        )
-                    }
-
-                </div>
-
-                {props.participant==="AI" ?(
-                    <div className={style.answer_context}>Hi! How can I help you with?</div>
-                ): (
-                    <div className={style.answer_context}>Some text from user on start to ask about something</div>
-
-                )
-                }
-
-
-
+                            />
+                        </span>
+                    </>
+                ) : (
+                    <>
+                        <div className={style.answer_header_icon_user}>U</div>
+                        <div className={style.answer_header_name}>User</div>
+                        {text}
+                    </>
+                )}
             </div>
-        )
-
-
-
+        </div>
+    );
 }
 
-export default ChatBotAnswer
+export default ChatBotAnswer;
