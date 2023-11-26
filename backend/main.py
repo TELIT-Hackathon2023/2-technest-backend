@@ -1,5 +1,8 @@
+from typing import List
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 from ChatbotService import ChatbotService
 from model import SendDataDto
@@ -19,6 +22,8 @@ app.add_middleware(
 
 chatbot_service = ChatbotService()
 
+class TwoDArray(BaseModel):
+    data: List[List[str]]
 
 @app.get("/prompt")
 def prompt(data: str):
@@ -43,3 +48,13 @@ async def receive_data(data: SendDataDto):
 async def refresh_model():
     chatbot_service.refresh_model()
     return {"message": "Chat bot was trained on a new documentation!"}
+
+
+
+# // [[question, answer ]] -> [(question, answer)] -> service.set_history([(question, answer)])
+@app.post("/set-history")
+def set_history(history_array: TwoDArray):
+
+    # history_array = [tuple(inner_list) for inner_list in history_array]
+    print(history_array.data)
+    return {"message": "OK"}
