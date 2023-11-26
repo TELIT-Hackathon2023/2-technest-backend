@@ -32,3 +32,27 @@
     justify-content: center;
 
 }
+
+
+.history_features{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 10px;
+    padding-bottom: 15px;
+}
+
+.icon{
+    cursor: pointer;
+    color: #969597;
+    font-size: 15px;
+    transition: all ease-in-out .2s;
+
+}
+
+.icon:hover{
+    color: #131313;
+    transition: all ease-in-out .2s;
+
+}
