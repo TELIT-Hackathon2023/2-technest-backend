@@ -1,8 +1,15 @@
 import React from 'react'
+import styles from './Chat.module.css'
+import HistoryBar from './HistoryBar'
 
 function Chat() {
   return (
-    <div>Chat</div>
+    <div className={styles.chat}>
+
+      <HistoryBar/>
+
+
+    </div>
   )
 }
 
