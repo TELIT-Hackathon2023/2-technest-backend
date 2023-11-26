@@ -1,0 +1,61 @@
+.input{
+    width: 600px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1px solid #DFDFDF;
+    margin: 0 auto;
+    padding: 0 25px 0 15px ;
+
+    color: #131313;
+    font-family: Open Sans, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 114.286% */
+
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 40px;
+
+}
+
+
+.input:focus {
+    outline: none;
+}
+
+.chat_input{
+    position: absolute;
+    bottom: 0;
+    transform: translateX(25%);
+}
+
+.button{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-115%);
+
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+
+    cursor: pointer;
+
+    border-radius: 4px;
+    background: linear-gradient(60deg, #e30899 -26.61%, #de0cd6 54.51%, #e50707 142.69%);
+    transition: all ease-in-out .2s;
+}
+
+.button:hover{
+    background: linear-gradient(60deg, #940868 -26.61%, #980894 54.51%, #720606 142.69%);
+    transition: all ease-in-out .2s;
+}
