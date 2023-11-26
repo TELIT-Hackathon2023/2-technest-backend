@@ -1,8 +1,18 @@
-
 from fastapi import FastAPI
+
+from ChatbotService import ChatbotService
 from model import SendDataDto
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
+chatbot_service = ChatbotService()
+
+
+@app.get("/prompt")
+def prompt(data: str):
+    return {"answer": chatbot_service.getAnswer(data)}
 
 
 @app.post("/api/v1/hello")
