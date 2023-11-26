@@ -10,33 +10,7 @@ function ChatBoard() {
         <div>
             <ChatBotAnswer participant={"AI"}/>
             <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
-            <ChatBotAnswer participant={"USER"}/>
+
 
         </div>
 
