@@ -1,4 +1,4 @@
 Pygments==2.14.0
 PyYAML==6.0
 six==1.16.0
-embedchain=0.1.21
+embedchain==0.1.21
