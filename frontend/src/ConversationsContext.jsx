@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { useLocalHistory } from "./hooks/useLocalHistory";
 import { serverUrlConnection } from "./settings/ConnectionSettings";
-import {arrayOfIntroPhrases} from "./settings/data"
+import { arrayOfIntroPhrases } from "./settings/data"
 
 /*
 
@@ -75,17 +75,27 @@ export function ConversationsProvider({ children }) {
         const target = history.find(h => h.id === id);
         if (!target) return
         setConversation(target);
+        // should transform [question, answer, ...] -> [[question, answer]]
+        let pairsArray = [];
+        const messages = target.messages;
+        for (let i = 1; i < messages.length; i += 2) {
+            pairsArray.push([messages[i], messages[i + 1]]);
+        }
         await fetch(`${BASE_URL}/set-history`, {
             method: "POST",
             headers: {
+                "content-type": "application/json",
                 "ngrok-skip-browser-warning": "69420",
-                "content-type": "application/json"
             },
-            body: JSON.parse(target)
-        });
-    }
+            body: JSON.parse({
+                data: pairsArray
+            })
+        })
+    };
 
-    return <ConversationsContext.Provider value={{ conversation, history, sendMessage, newConversation, loadHistoryEntry }}>
-        {children}
-    </ConversationsContext.Provider>
+    return (
+        <ConversationsContext.Provider value={{ conversation, history, sendMessage, newConversation, loadHistoryEntry }}>
+            {children}
+        </ConversationsContext.Provider>
+    )
 }

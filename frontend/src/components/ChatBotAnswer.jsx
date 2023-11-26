@@ -10,7 +10,7 @@ function ChatBotAnswer({ role, text }) {
                     <>
                         <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}><div className={style.answer_header_icon}>AI</div>
                             <div className={style.answer_header_name}>Tardis</div></div>
-                        <span style={{ marginTop: "0.25rem" }}>
+                        <span style={{ marginTop: "0.05rem" }}>
                             <Typewriter
                                 options={{
                                     delay: 10
