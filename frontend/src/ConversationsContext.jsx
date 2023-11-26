@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react";
 import { useLocalHistory } from "./hooks/useLocalHistory";
 
 /*
@@ -10,21 +10,7 @@ type HistoryEntry =
 
 */
 
-const BASE_URL = "http://localhost:8000"
-
-function isSameDay(timestamp1, timestamp2) {
-    // Create Date objects from timestamps
-    const date1 = new Date(timestamp1);
-    const date2 = new Date(timestamp2);
-
-    // Compare year, month, and day
-    const isSameYear = date1.getFullYear() === date2.getFullYear();
-    const isSameMonth = date1.getMonth() === date2.getMonth();
-    const isSameDay = date1.getDate() === date2.getDate();
-
-    // Return true if all components (year, month, day) are the same
-    return isSameYear && isSameMonth && isSameDay;
-}
+const BASE_URL = "https://a94f-147-232-36-11.ngrok-free.app"
 
 export const ConversationsContext = createContext({
     conversation: [],
@@ -52,8 +38,6 @@ export function ConversationsProvider({ children }) {
             text: answer
         }])
     }
-
-    console.log("History:", history);
 
     async function newConversation() {
         setHistory(prev => [...prev, conversation]);

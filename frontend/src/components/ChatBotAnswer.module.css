@@ -1,4 +1,4 @@
-.answer{
+.answer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -6,13 +6,13 @@
     margin-top: 35px;
 }
 
-.answer_header{
+.answer_header {
     display: flex;
-    align-items: center;
-
+    align-items: start;
+    gap: 1rem;
 }
 
-.answer_header_icon{
+.answer_header_icon {
     width: 26px;
     height: 26px;
     border-radius: 6px;
@@ -29,7 +29,7 @@
     align-items: center;
 }
 
-.answer_header_icon_user{
+.answer_header_icon_user {
     width: 26px;
     height: 26px;
     border-radius: 6px;
@@ -46,7 +46,7 @@
     background: linear-gradient(60deg, #3a66a6 -26.61%, #2cc469 54.51%, #0ab0c4 142.69%) !important;
 }
 
-.answer_header_name{
+.answer_header_name {
     margin-left: 10px;
     color: #131313;
     font-family: Open Sans, sans-serif;
@@ -56,7 +56,7 @@
 
 }
 
-.answer_context{
+.answer_context {
 
     margin-top: 5px;
     color: #131313;

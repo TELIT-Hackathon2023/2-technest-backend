@@ -1,13 +1,14 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import style from './ChatInput.module.css'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowAltCircleUp} from "@fortawesome/free-solid-svg-icons";
-import {serverUrlConnection} from "../../settings/ConnectionSettings"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleUp } from "@fortawesome/free-solid-svg-icons";
+import { serverUrlConnection } from "../../settings/ConnectionSettings"
+
 function ChatInput({ onNewMessage }) {
 
-    const [userMsg,setUsrMsg] = useState("");
+    const [userMsg, setUsrMsg] = useState("");
 
-    async function sendData(){
+    async function sendData() {
 
         onNewMessage({ role: 'USER', text: userMsg });
 
@@ -20,7 +21,7 @@ function ChatInput({ onNewMessage }) {
         const jsonResponse = await response.json();
 
         console.log(jsonResponse.answer);
-        onNewMessage({ role: 'AI', text: ""+jsonResponse.answer });
+        onNewMessage({ role: 'AI', text: "" + jsonResponse.answer });
 
         setUsrMsg("");
 
@@ -28,18 +29,18 @@ function ChatInput({ onNewMessage }) {
     }
 
 
-  return (
-    <div className={style.chat_input}>
+    return (
+        <div className={style.chat_input}>
 
-        <input onChange={(event)=> setUsrMsg(event.target.value)}
-            value={userMsg}
-            className={style.input} placeholder="Write your answer"/>
-        <div className={style.button} onClick={sendData}>
-            <FontAwesomeIcon icon={faArrowAltCircleUp}></FontAwesomeIcon>
+            <input onChange={(event) => setUsrMsg(event.target.value)}
+                value={userMsg}
+                className={style.input} onKeyDown={(e) => e.key === "Enter" && sendData()} placeholder="Write your answer" />
+            <div className={style.button} onClick={sendData}>
+                <FontAwesomeIcon icon={faArrowAltCircleUp}></FontAwesomeIcon>
+            </div>
+
         </div>
-
-    </div>
-  )
+    )
 }
 
 export default ChatInput
