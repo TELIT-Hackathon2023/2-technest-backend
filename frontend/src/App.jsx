@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import second from './components'
+import second from './components/Chat'
+import Chat from './components/Chat'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className='AppContainer'>
 
-      <h1>Hello</h1>
+      <Chat></Chat>
+      
     </div>
   )
 }
