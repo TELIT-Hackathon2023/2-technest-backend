@@ -24,7 +24,7 @@ def split_markdown(data: str):
 
 
 class ChatbotService:
-    def init(self):
+    def __init__(self):
         texts = split_markdown(read_file("./data/combined.md"))
         embeddings = OpenAIEmbeddings()
         db = Chroma.from_documents(texts, embeddings)

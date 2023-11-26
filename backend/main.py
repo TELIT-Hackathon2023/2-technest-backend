@@ -12,7 +12,7 @@ chatbot_service = ChatbotService()
 
 @app.get("/prompt")
 def prompt(data: str):
-    return {"answer": chatbot_service.getAnswer(data)}
+    return {"answer": chatbot_service.get_answer(data)}
 
 
 @app.post("/api/v1/hello")
