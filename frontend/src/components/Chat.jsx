@@ -1,8 +1,14 @@
 import React from 'react'
+import LeftbarMenu from './LeftbarMenu'
+import style from './Chat.module.css'
 
 function Chat() {
   return (
-    <div>Chat</div>
+    <div className={style.chat}>
+      
+      <LeftbarMenu/>
+
+    </div>
   )
 }
 
