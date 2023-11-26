@@ -1,0 +1,14 @@
+.leftbar_menu{
+
+    max-width: 76px;
+    min-width: 76px;
+    height: calc(100% - 15px - 20px);
+    border-right: 1px solid #DFDFDF;
+    padding: 15px 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+
+}
