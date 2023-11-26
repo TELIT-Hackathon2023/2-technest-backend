@@ -13,9 +13,9 @@ function ChatBoard() {
   useEffect(() => {
     setTimeout(() => {
       setParticipants([
-        { role: "USER", text: "Hello" },
-        { role: "AI", text: 'Hi, how are you' },
-        { role: "USER", text: "How's the weather" }
+        // { role: "USER", text: "Hello" },
+        // { role: "AI", text: 'Hi, how are you' },
+        // { role: "USER", text: "How's the weather" }
       ])
     }, 1000);
   }, [])
