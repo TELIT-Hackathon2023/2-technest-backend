@@ -52,9 +52,9 @@ async def refresh_model():
 
 
 # // [[question, answer ]] -> [(question, answer)] -> service.set_history([(question, answer)])
-@app.post("/set-history")
-def set_history(history_array: TwoDArray):
-
-    # history_array = [tuple(inner_list) for inner_list in history_array]
-    print(history_array.data)
-    return {"message": "OK"}
+# @app.post("/set-history")
+# def set_history(history_array: TwoDArray):
+#
+#     # history_array = [tuple(inner_list) for inner_list in history_array]
+#     print(history_array.data)
+#     return {"message": "OK"}

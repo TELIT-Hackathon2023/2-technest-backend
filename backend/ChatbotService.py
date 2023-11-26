@@ -67,6 +67,9 @@ class ChatbotService:
         self.qa = None
         self.refresh_model()
 
+    # def set_history(self, history_array):
+    #     self.history = history_array
+
     def get_answer(self, prompt: str):
         result = self.qa({"question": prompt, "chat_history": self.history})
         if result is None:
