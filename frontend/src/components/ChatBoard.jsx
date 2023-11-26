@@ -6,9 +6,15 @@ import ChatInput from "./UI/ChatInput";
 
 function ChatBoard() {
   const [participants, setParticipants] = useState([
-    { role: "USER", text: "Hello" },
-    { role: "AI", text: 'Hi, how are you' }
+    { role: "AI", text: 'Hi, how can I help you' }
   ])
+
+    const addNewMessage = (message) => {
+      console.log(message)
+        setParticipants(prevParticipants => [...prevParticipants, message]);
+    };
+
+
 
   return (
     <div className={style.chatboard}>
@@ -18,7 +24,7 @@ function ChatBoard() {
         ))}
       </div>
 
-      <ChatInput />
+        <ChatInput onNewMessage={addNewMessage} />
 
     </div>
   )
