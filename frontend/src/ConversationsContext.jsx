@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 import { useLocalHistory } from "./hooks/useLocalHistory";
+import { serverUrlConnection } from "./settings/ConnectionSettings";
+import {arrayOfIntroPhrases} from "./settings/data"
 
 /*
 
@@ -10,7 +12,18 @@ type HistoryEntry =
 
 */
 
-const BASE_URL = "https://a94f-147-232-36-11.ngrok-free.app"
+const BASE_URL = serverUrlConnection
+
+const generateStartingPhrase = () => {
+
+    const min = 1;
+    const max = 10;
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    const foundPhrase = arrayOfIntroPhrases.find((el) => el.id === randomNumber);
+
+    return foundPhrase.phrase;
+}
 
 export const ConversationsContext = createContext({
     conversation: [],
@@ -21,7 +34,7 @@ export function ConversationsProvider({ children }) {
     const [conversation, setConversation] = useState({
         id: crypto.randomUUID(),
         messages: [
-            { role: "AI", text: 'Hi, how can I help you?' }
+            { role: "AI", text: generateStartingPhrase() }
         ]
     });
     const [history, setHistory] = useLocalHistory();
