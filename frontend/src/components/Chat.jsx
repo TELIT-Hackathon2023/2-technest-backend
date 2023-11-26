@@ -7,9 +7,8 @@ import HistoryBar from './HistoryBar'
 function Chat() {
   return (
     <div className={styles.chat}>
-
         <LeftbarMenu/>
-      <HistoryBar/>
+        <HistoryBar/>
 
 
     </div>

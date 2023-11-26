@@ -30,11 +30,11 @@ function HistoryBar() {
             historyTags:[
                 {
                     id:1,
-                    history : "history1"
+                    history : "Targis what is it ?"
                 },
                 {
                     id:2,
-                    history : "history2"
+                    history : "AI in T-Systems"
                 }
                 ]
         },
@@ -43,11 +43,11 @@ function HistoryBar() {
             historyTags:[
                 {
                     id:3,
-                    history : "history9.1"
+                    history : "Targis system architecture"
                 },
                 {
                     id:4,
-                    history : "history9.2"
+                    history : "Microservices in Targis"
                 }
             ]
         }
@@ -55,6 +55,8 @@ function HistoryBar() {
   return (
 
     <div className={styles.history_section_container}>
+
+        <div style={{padding :"20px 0"}}>
 
         {arr.map((element) => (
             <div className={styles.history_item_container} key={element.date}>
@@ -68,6 +70,8 @@ function HistoryBar() {
                 </div>
             </div>
         ))}
+        </div>
+
 
 
 

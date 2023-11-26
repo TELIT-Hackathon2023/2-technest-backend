@@ -2,12 +2,12 @@
 
     background: white;
     width: 240px;
-    padding: 0;
+    padding: 0 0;
     height: 100vh;
     -ms-overflow-style: none;
     scrollbar-width: none;
     overflow: auto;
-    border-right: solid 2px grey;
+    border-right: solid 1px #D0D0D0FF;
 
 }
 .history_section_container::-webkit-scrollbar {
