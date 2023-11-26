@@ -3,11 +3,13 @@ import style from './ChatInput.module.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowAltCircleUp} from "@fortawesome/free-solid-svg-icons";
 import {serverUrlConnection} from "../../settings/ConnectionSettings"
-function ChatInput() {
+function ChatInput({ onNewMessage }) {
 
     const [userMsg,setUsrMsg] = useState("");
 
     async function sendData(){
+
+        onNewMessage({ role: 'USER', text: userMsg });
 
         const response = await fetch(`${serverUrlConnection}/prompt?data=${userMsg}`,
             {
@@ -16,7 +18,13 @@ function ChatInput() {
                 }),
             });
         const jsonResponse = await response.json();
+
         console.log(jsonResponse.answer);
+        onNewMessage({ role: 'AI', text: ""+jsonResponse.answer });
+
+        setUsrMsg("");
+
+
     }
 
 
