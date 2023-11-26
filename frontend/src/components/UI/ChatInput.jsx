@@ -2,16 +2,29 @@ import React, {useState} from 'react'
 import style from './ChatInput.module.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowAltCircleUp} from "@fortawesome/free-solid-svg-icons";
-
-function ChatInput() {
+import {serverUrlConnection} from "../../settings/ConnectionSettings"
+function ChatInput({ onNewMessage }) {
 
     const [userMsg,setUsrMsg] = useState("");
 
     async function sendData(){
 
-        const response = await fetch(`http://localhost:8000/prompt?data=${userMsg}`);
+        onNewMessage({ role: 'USER', text: userMsg });
+
+        const response = await fetch(`${serverUrlConnection}/prompt?data=${userMsg}`,
+            {
+                headers: new Headers({
+                    "ngrok-skip-browser-warning": "69420",
+                }),
+            });
         const jsonResponse = await response.json();
+
         console.log(jsonResponse.answer);
+        onNewMessage({ role: 'AI', text: ""+jsonResponse.answer });
+
+        setUsrMsg("");
+
+
     }
 
 
