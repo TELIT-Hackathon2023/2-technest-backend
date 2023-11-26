@@ -5,14 +5,11 @@ from langchain.llms import OpenAI
 from langchain.text_splitter import MarkdownHeaderTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.chains import ConversationalRetrievalChain
-import git
 import file_combiner
 from project_constants import *
-from io import BytesIO
 import requests
 from zipfile import ZipFile
 import shutil
-from dotenv import load_dotenv
 
 
 headers_to_split_on = [

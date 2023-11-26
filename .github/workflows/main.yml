@@ -1,0 +1,16 @@
+name: Trigger FastAPI Endpoint
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-endpoint:
+    runs-on: macos-latest
+
+    steps:
+    - name: Refresh model
+      run: |
+        # Replace the URL with the actual URL of your FastAPI server
+        curl -X POST "https://a94f-147-232-36-11.ngrok-free.app/refresh-model"
