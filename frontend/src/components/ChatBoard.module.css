@@ -1,6 +1,5 @@
 .chatboard{
     padding-left:100px;
-    padding-top: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
