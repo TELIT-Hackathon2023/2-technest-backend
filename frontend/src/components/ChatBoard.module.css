@@ -23,7 +23,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 50px; /* Adjust the height for more or less blur area */
+    height: 125px; /* Adjust the height for more or less blur area */
     background: linear-gradient(to bottom, transparent, white); /* Use your div's background color at the end */
-    filter: blur(8px); /* Adjust the blur intensity */
+    filter: blur(38px); /* Adjust the blur intensity */
 }

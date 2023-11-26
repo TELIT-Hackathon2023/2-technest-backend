@@ -1,5 +1,5 @@
 .history_section_container{
-
+        position: relative;
     background: white;
     width: 240px;
     padding: 0 0;
@@ -8,6 +8,8 @@
     scrollbar-width: none;
     overflow: auto;
     border-right: solid 1px #DFDFDF;
+
+    z-index: 1000;
 
 }
 .history_section_container::-webkit-scrollbar {
